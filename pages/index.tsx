@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
-import Container from '@material-ui/core/Container'
-import Typography from '@material-ui/core/Typography'
+import styles from './index.module.css'
 
 const Blindtext = dynamic<any>(
   () => import('../components/Blindtext').then((res) => res.Blindtext),
@@ -15,15 +14,10 @@ export const Home = (): JSX.Element => (
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
-    <Container component="main">
-      <main>
-        <Typography component="h1" variant="h2">
-          Sign in Gris di und hob Spaß beim zambaun von deim Zeig
-        </Typography>
-
-        <Blindtext />
-      </main>
-    </Container>
+    <main className={styles.container}>
+      <h1>Gris di und hob Spaß beim zambaun von deim Zeig</h1>
+      <Blindtext />
+    </main>
   </>
 )
 
