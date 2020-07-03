@@ -2,11 +2,45 @@ import { LoremIpsum } from 'lorem-ipsum'
 import { useState, ReactElement } from 'react'
 import CopyToClipboard from 'react-copy-to-clipboard'
 import { renderToStaticMarkup } from 'react-dom/server'
+import Typography from '@material-ui/core/Typography'
+import Slider from '@material-ui/core/Slider'
+import Grid from '@material-ui/core/Grid'
+import Button from '@material-ui/core/Button'
+import Box from '@material-ui/core/Box'
+import {
+  createMuiTheme,
+  ThemeProvider,
+  makeStyles,
+} from '@material-ui/core/styles'
 import words from '../words.json'
 
+const useStyles = makeStyles({
+  root: {
+    maxWidth: 420,
+  },
+})
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#757ce8',
+      main: '#7D9B6B',
+      dark: '#002884',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ff7961',
+      main: '#f44336',
+      dark: '#ba000d',
+      contrastText: '#000',
+    },
+  },
+})
+
 export const Blindtext = (): JSX.Element => {
-  const [paragraphs, setParagraphs] = useState<number>(1)
-  const [length, setLength] = useState<number>(1)
+  const [paragraphs, setParagraphs] = useState<number>(5)
+  const [length, setLength] = useState<number>(5)
+  const classes = useStyles()
 
   const textLength = {
     1: {
@@ -53,38 +87,64 @@ export const Blindtext = (): JSX.Element => {
 
   return (
     <>
-      <label htmlFor="paragraphs">Absätze ({paragraphs})</label>
-      <input
-        className=""
-        type="range"
-        id="paragraphs"
-        min="1"
-        max="50"
-        step="1"
-        value={paragraphs}
-        onChange={(event) => setParagraphs(parseInt(event.target.value))}
-      />
-      <label htmlFor="paragraphs">Länge ({length})</label>
-      <input
-        className=""
-        type="range"
-        id="paragraphs"
-        min="1"
-        max="3"
-        step="1"
-        value={length}
-        onChange={(event) => setLength(parseInt(event.target.value))}
-      />
+      <ThemeProvider theme={theme}>
+        <Grid container spacing={3} className={classes.root}>
+          <Grid item xs={2}>
+            <Typography id="discrete-slider-always" gutterBottom>
+              Absätze
+            </Typography>
+          </Grid>
+          <Grid item xs={10}>
+            <Slider
+              defaultValue={5}
+              aria-labelledby="discrete-slider-always"
+              step={1}
+              min={1}
+              value={paragraphs}
+              onChange={(event, newValue) => setParagraphs(newValue as number)}
+              valueLabelDisplay="on"
+            />
+          </Grid>
+        </Grid>
 
-      <CopyToClipboard text={text}>
-        <button>Kopieren als Text</button>
-      </CopyToClipboard>
+        <Grid container spacing={3} className={classes.root}>
+          <Grid item xs={2}>
+            <Typography id="length-label" gutterBottom>
+              Länge
+            </Typography>
+          </Grid>
+          <Grid item xs={10}>
+            <Slider
+              defaultValue={5}
+              aria-labelledby="length"
+              step={1}
+              min={1}
+              max={3}
+              value={length}
+              onChange={(event, newValue) => setLength(newValue as number)}
+              valueLabelDisplay="on"
+            />
+          </Grid>
+        </Grid>
 
-      <CopyToClipboard text={renderToStaticMarkup(html)}>
-        <button>Kopieren als HTML</button>
-      </CopyToClipboard>
+        <CopyToClipboard text={text}>
+          <Box mr={2} display="inline-block">
+            <Button variant="outlined" color="primary">
+              Kopieren als Text
+            </Button>
+          </Box>
+        </CopyToClipboard>
 
-      <div>{html}</div>
+        <CopyToClipboard text={renderToStaticMarkup(html)}>
+          <Box mr={2} display="inline-block">
+            <Button variant="outlined" color="primary">
+              Kopieren als HTML
+            </Button>
+          </Box>
+        </CopyToClipboard>
+
+        <div>{html}</div>
+      </ThemeProvider>
     </>
   )
 }
