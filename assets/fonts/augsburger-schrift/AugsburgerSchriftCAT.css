@@ -1,0 +1,8 @@
+@font-face {
+  font-family: 'AugsburgerSchriftCAT';
+  src: url('AugsburgerSchriftCAT.woff2') format('woff2'),
+    url('AugsburgerSchriftCAT.woff') format('woff'),
+    url('AugsburgerSchriftCAT.otf') format('opentype');
+  font-style: normal;
+  font-weight: 400;
+}
