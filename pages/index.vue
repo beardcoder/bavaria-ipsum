@@ -67,6 +67,7 @@
 <style lang="postcss" scoped>
     .container {
         margin: 0 auto;
+        padding: 0 20px;
         min-height: 100vh;
         display: flex;
         justify-content: center;
