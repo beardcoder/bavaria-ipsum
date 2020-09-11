@@ -3,16 +3,16 @@
         <div>
             <div class="logo">
                 <Logo />
-                <div>
-                    Homat is a Gfui, Homat is da wo dei Herz is, Homat is dort
-                    wo'sd an Bauch ned eiziang muaßt.
-                </div>
+            </div>
+            <div class="slag">
+                Homat is a Gfui, Homat is da wo dei Herz is, Homat is dort wo'sd
+                an Bauch ned eiziang muaßt.
             </div>
             <div class="settings">
                 <client-only>
                     <div class="settings__item">
                         <div class="settings__label">Wia vui moxt ham?</div>
-                        <vue-slider v-model="paragraphs" :min="1" />
+                        <vue-slider v-model="paragraphs" :min="1" :max="50" />
                     </div>
                 </client-only>
                 <client-only>
@@ -72,10 +72,17 @@
         display: flex;
         justify-content: center;
         max-width: 600px;
+        z-index: 1;
+        position: relative;
     }
 
     .logo {
-        margin-bottom: 5rem;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .slag {
+        margin-bottom: 3rem;
         text-align: center;
     }
 
@@ -88,6 +95,7 @@
 
     .settings {
         margin-bottom: 2rem;
+        max-width: 300px;
     }
 
     .settings__item {

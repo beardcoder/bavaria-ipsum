@@ -1,36 +1,20 @@
 <template>
-    <div>
+    <div class="app">
         <Nuxt />
     </div>
 </template>
 
-<style>
-    .button--green {
-        display: inline-block;
-        border-radius: 4px;
-        border: 1px solid #3b8070;
-        color: #3b8070;
-        text-decoration: none;
-        padding: 10px 30px;
-    }
-
-    .button--green:hover {
-        color: #fff;
-        background-color: #3b8070;
-    }
-
-    .button--grey {
-        display: inline-block;
-        border-radius: 4px;
-        border: 1px solid #35495e;
-        color: #35495e;
-        text-decoration: none;
-        padding: 10px 30px;
-        margin-left: 15px;
-    }
-
-    .button--grey:hover {
-        color: #fff;
-        background-color: #35495e;
+<style scoped>
+    .app::before {
+        display: block;
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-image: url('../assets/images/background.svg');
+        background-repeat: no-repeat;
+        opacity: 0.1;
+        width: 800px;
+        height: 800px;
     }
 </style>

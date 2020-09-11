@@ -11,7 +11,7 @@
 
 <style module>
     .logo {
-        height: auto;
-        width: 420px;
+        height: 300px;
+        width: auto;
     }
 </style>
