@@ -1,10 +1,5 @@
 export default {
     /*
-     ** Nuxt rendering mode
-     ** See https://nuxtjs.org/api/configuration-mode
-     */
-    mode: 'universal',
-    /*
      ** Nuxt target
      ** See https://nuxtjs.org/api/configuration-target
      */
@@ -77,7 +72,6 @@ export default {
             plugins: {
                 // Disable a plugin by passing false as value
                 'postcss-url': false,
-                'postcss-nested': {},
                 'postcss-hexrgba': {},
                 'postcss-normalize': {},
             },
